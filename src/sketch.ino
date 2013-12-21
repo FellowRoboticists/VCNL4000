@@ -26,12 +26,12 @@ void loop() {
   /* Serial.println(distance); */
   if (distance > 2150) {
     if (!state) {
-      Serial.println("Turn sound on");
+      Serial.println("InRange");
       state = true;
     }
   } else {
     if (state) {
-      Serial.println("Turn sound off");
+      Serial.println("OutOfRange");
       state = false;
     }
   }
