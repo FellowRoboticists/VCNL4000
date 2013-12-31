@@ -1,3 +1,10 @@
+// VCNL4000 Arduino Library
+//
+// Original work written by Adafruit!
+//
+// Class organization: Copyright (c) 2013 Dave Sieh
+// See LICENSE.txt for details.
+
 #ifndef _VCNL400_h_
 #define _VCNL400_h_
 

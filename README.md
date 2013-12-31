@@ -8,3 +8,12 @@ sensing and light intensity readings.
 The commands for the sensor are such that you can read proximity readings
 independenty of ambient light levels.
 
+Copyright
+=========
+
+Original works written by Adafruit!.
+
+Class organization: Copyright (c) 2013 Dave Sieh
+
+See LICENSE.txt for details.
+

@@ -1,0 +1,5 @@
+Original works written by Adafruit! 
+
+Class organization: Copyright (c) 2013 Dave Sieh
+
+Public domain.
