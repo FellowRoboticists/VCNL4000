@@ -11,6 +11,8 @@ independenty of ambient light levels.
 Copyright
 =========
 
+Original works written by Adafruit!.
+
 Copyright (c) 2014 Dave Sieh
 
 See LICENSE.txt for details.
