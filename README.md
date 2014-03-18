@@ -8,3 +8,10 @@ sensing and light intensity readings.
 The commands for the sensor are such that you can read proximity readings
 independenty of ambient light levels.
 
+Copyright
+=========
+
+Copyright (c) 2014 Dave Sieh
+
+See LICENSE.txt for details.
+

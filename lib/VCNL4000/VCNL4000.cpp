@@ -1,5 +1,6 @@
 #include <Arduino.h>
 #include <Wire.h>
+#include <pspc_support.h>
 #include "VCNL4000.h"
 
 VCNL4000::VCNL4000() {
@@ -11,25 +12,25 @@ void VCNL4000::begin() {
   uint8_t rev = read8(VCNL4000_PRODUCTID);
   
   if ((rev & 0xF0) != 0x10) {
-    Serial.println("Sensor not found :(");
+    Serial.println(P("Sensor not found :("));
     while (1);
   }
 
   write8(VCNL4000_IRLED, 20);        // set to 20 * 10mA = 200mA
-  Serial.print("IR LED current = ");
+  Serial.print(P("IR LED current = "));
   Serial.print(read8(VCNL4000_IRLED) * 10, DEC);
-  Serial.println(" mA");
+  Serial.println(P(" mA"));
 
   //write8(VCNL4000_SIGNALFREQ, 3);
-  Serial.print("Proximity measurement frequency = ");
+  Serial.print(P("Proximity measurement frequency = "));
   uint8_t freq = read8(VCNL4000_SIGNALFREQ);
-  if (freq == VCNL4000_3M125) Serial.println("3.125 MHz");
-  if (freq == VCNL4000_1M5625) Serial.println("1.5625 MHz");
-  if (freq == VCNL4000_781K25) Serial.println("781.25 KHz");
-  if (freq == VCNL4000_390K625) Serial.println("390.625 KHz");
+  if (freq == VCNL4000_3M125) Serial.println(P("3.125 MHz"));
+  if (freq == VCNL4000_1M5625) Serial.println(P("1.5625 MHz"));
+  if (freq == VCNL4000_781K25) Serial.println(P("781.25 KHz"));
+  if (freq == VCNL4000_390K625) Serial.println(P("390.625 KHz"));
   
   write8(VCNL4000_PROXINITYADJUST, 0x81);
-  Serial.print("Proximity adjustment register = ");
+  Serial.print(P("Proximity adjustment register = "));
   Serial.println(read8(VCNL4000_PROXINITYADJUST), HEX);
   
   // arrange for continuous conversion
@@ -41,7 +42,7 @@ uint16_t VCNL4000::readProximity() {
   write8(VCNL4000_COMMAND, VCNL4000_MEASUREPROXIMITY);
   while (1) {
     uint8_t result = read8(VCNL4000_COMMAND);
-    //Serial.print("Ready = 0x"); Serial.println(result, HEX);
+    //Serial.print(P("Ready = 0x")); Serial.println(result, HEX);
     if (result & VCNL4000_PROXIMITYREADY) {
       return read16(VCNL4000_PROXIMITYDATA);
     }
@@ -53,7 +54,7 @@ uint16_t VCNL4000::readAmbient() {
   write8(VCNL4000_COMMAND, VCNL4000_MEASUREAMBIENT);
   while (1) {
     uint8_t result = read8(VCNL4000_COMMAND);
-    //Serial.print("Ready = 0x"); Serial.println(result, HEX);
+    //Serial.print(P("Ready = 0x")); Serial.println(result, HEX);
     if (result & VCNL4000_AMBIENTREADY) {
       return read16(VCNL4000_AMBIENTDATA);
     }
